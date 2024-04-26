@@ -28,9 +28,8 @@ jobs:
           sudo sed -i "s/^#PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
           sudo sed -i "s/^PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
           sudo systemctl restart sshd 
-          sudo useradd -m admins
-          echo "admins:..admins.." | sudo chpasswd
-          sudo usermod -aG sudo admins
+          echo "root:root123" | sudo chpasswd
+          sudo usermod -aG sudo root
           git clone --recursive https://github.com/zhaojh329/rtty.git
           cd rtty && mkdir build && cd build
           cmake .. && make install
